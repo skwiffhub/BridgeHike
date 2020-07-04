@@ -1,0 +1,16 @@
+initial_hikers_speed:
+  - 100
+  - 50
+  - 20
+  - 10
+
+bridges:
+  - length: 100
+  - length: 250
+    additional_hiker_speed:
+      - 2.5
+  - length: 150
+    additional_hiker_speed:
+      - 25
+      - 15
+      
