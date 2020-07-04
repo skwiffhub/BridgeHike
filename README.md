@@ -1,5 +1,4 @@
 # BridgeHike Sample Code
-
 C++ program that simulates a team hiking through a forest at night. 
 The team encounters a series of narrow bridges along the way. 
 At each bridge they may meet additional hikers who need their help to cross the bridge.
@@ -48,10 +47,9 @@ The implementation makes use of the open-source `yaml-cpp` YAML parser. This fac
 the creation of C++ vector-like objects for each of the elements in the `config.yaml`
 input data file, which contains information about all the hiker speeds and bridge lengths.
 
-The code then creates two separate vectors: one for hikers and their speeds, and one
-for bridges and their associated lengths. The bridge vector size is static once obtained
-from the YAML configuration file. The hiker vector size changes as new hikers are 
-encountered along the way. 
+The `Hiker` class two separate vectors: one for hikers and their speeds, and one
+for bridges and their associated crossing times. Vectors allow for flexible sizing for
+the number of hikers and number of bridges.
 
 The initial hikers proceed to the first bridge, and check for additional hikers. The fastest
 hiker always holds the torch; if there are more than two hikers, the torch will need to be
