@@ -1,5 +1,4 @@
 # BridgeHike Sample Code
-
 C++ program that simulates a team hiking through a forest at night. 
 The team encounters a series of narrow bridges along the way. 
 At each bridge they may meet additional hikers who need their help to cross the bridge.
@@ -21,8 +20,11 @@ at 50 ft/minute, C at 20 ft/minute, and D at 10 ft/minute), at the second bridge
 an additional hiker crosses with the team (E at 2.5 ft/minute), and finally at the last bridge
 (150 ft long) two hikers are encountered (F at 25 ft/minute and G at 15 ft/minute).
 
-## Building (tested on CentOS 7 and Ubuntu 16.04)
+## Requirements
+- Linux distro
+- g++ and associated development tools
 
+## Building (tested on CentOS 7 and Ubuntu 16.04)
 Clone this repo and then run this from the project root directory:
 
 ```
@@ -31,7 +33,6 @@ $ make
 ```
 
 ## Running
-
 To run the three-bridge scenario described above:
 ```
 $ make run_it
@@ -40,3 +41,23 @@ or:
 ```
 $ ./bridge_hikers
 ```
+
+## Explanation of Implementation
+The implementation makes use of the open-source `yaml-cpp` YAML parser. This facilitates
+the creation of C++ vector-like objects for each of the elements in the `config.yaml`
+input data file, which contains information about all the hiker speeds and bridge lengths.
+
+The `Hiker` class two separate vectors: one for hikers and their speeds, and one
+for bridges and their associated crossing times. Vectors allow for flexible sizing for
+the number of hikers and number of bridges.
+
+The initial hikers proceed to the first bridge, and check for additional hikers. The fastest
+hiker always holds the torch; if there are more than two hikers, the torch will need to be
+run back across the bridge, such that all the slowest hikers are escorted by the fastest hiker.
+The last two hikers are the fastest and second-fastest hikers, and once they are across the
+bridge, the group can proceed to the next bridge, where the process described in this
+paragraph is repeated.
+
+After each bridge is hiked, the total time to cross the bridge is logged to a vector. Once
+all bridges have been crossed, this vector is then iterated through and each bridge time
+is added up to produce the total time to cross all the bridges.
