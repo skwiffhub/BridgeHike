@@ -14,6 +14,8 @@
 // Comment out to remove debug traces
 //#define DEBUG_BH
 
+// Maintain a vector with all the hikers and keep them sorted in
+// order from slowest to fastest.
 void Hiker::AddAndSortHikers( const YAML::Node& hikersYAML )
 {
     for( YAML::const_iterator it = hikersYAML.begin(); it != hikersYAML.end() ; ++it ) {
@@ -69,7 +71,7 @@ void Hiker::HikeAcrossBridge( const YAML::Node& bridgeYAML )
        std::cout << "hiker speed: " << *it << " feet per minute" << std::endl;
 #endif
         bridge_time += ( bridge_length / *it );
-        // When the last hiker is escorted across, we're dopne with this bridge.
+        // When the last hiker is escorted across, we're done with this bridge.
         if ( (it + 2) != all_hikers.end() ) {
             // fastest hiker runs back across the bridge with the torch
 #ifdef DEBUG_BH

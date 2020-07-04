@@ -1,6 +1,7 @@
 all: make-yaml-cpp bridge_hikers
 
 get-yaml-cpp:
+	-rm -rf yaml-cpp
 	git clone https://github.com/jbeder/yaml-cpp
 
 make-yaml-cpp:
